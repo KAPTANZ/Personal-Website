@@ -1,132 +1,213 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import swr from '../lib/swr';
-import Tippy from '@tippyjs/react';
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="charset" value="utf-8" />
+<meta content="charset:utf-8" />
+<title>Emirhan Arıcılık</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/918480803669897266/1002137306850934814/Free_Sample_By_Wix_1.jpg" />
+<link href="https://botsbase.net/assets/css/main.css" rel="stylesheet">
+<link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="https://botsbase.net/assets/css/main.css" />
+<link rel="stylesheet" href="css/new.css" />
+<link rel="stylesheet" href="css/mobile.css" />
+	
+  <!-- * LINKS * -->	
+  <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300" rel="stylesheet" type="text/css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- * LINKS * -->	
+  
+<script src="https://cdn.tomassmith.me/public-scripts/disable-inspect.js"></script>
+</head>
+
+<body oncontextmenu="return false">
+<div class="loadingbar"></div>
+<nav>
+<div class="toggle">
+<div class="bar1"></div>
+<div class="bar2"></div>
+<div class="bar3"></div>
+</div>
+
+<div> &nbsp &nbsp
+    <a class="btn" href="/"><i class="fas fa-home"></i>・Ürün Fiyatları</a>
+    <a class="btn" href="komutlar.html"><i class="fas fa-phone"></i>・İletişim Bilgilerimiz</a>
+      
+    </div>
+<div class="logo">
+</div>
+</div>
+<div class="right">
+<a class="btn" href=""><i class="fab fa-youtube"></i>・Youtube</a>
+
+        
+</div>
+</nav>
+<div class="mobilenav">
+<div class="top">
+<div class="logo">
+</div>
+<div class="close">
+<img src="https://cdn.glitch.com/47f2aa77-8b49-40b8-bee5-14ea31f0706e%2Fletter-x.svg" height="25px" />
+</div>
+</div>
 
 
-export default function Home() {
-  const { data: _repositories } = swr("/api/repos");
-  const repositories = _repositories ? _repositories : null;
-
-  return (
-    <>
-      <div className="bg-neutral-800/10 shadow-xl rounded-lg w-full h-auto mt-6">
-          <div className="relative">
-            <div className="flex flex-col lg:flex-row justify-between w-full p-6 px-8 items-center h-full">
-              <div className="flex flex-col lg:justify-start justify-center items-center lg:items-start mt-5 lg:mt-0 w-full">
-                <div className="flex items-center">
-                <p className="flex items-center text-white text-4xl font-semibold">
-                  Umut Bayraktar
-                </p>
-                  <Tippy content={`Online`} animation="shift-away" arrow={false}>
-                    <span className={`ml-2 text-online px-2 py-1 font-normal rounded-md text-sm`}>
-                          <i className={`fa fa-circle text-online mr-2`} />Online
-                    </span>
-                  </Tippy>
-            
-                </div>
-                <p className="text-white/50 text-md mt-3">
-I am a professional editor and intermediate software developer. I have been professionally interested in community management and development for 5 years, I have high level knowledge and experience in areas such as community management and social media management.
-                </p>
-              </div>
-              <div className={`order-first lg:order-last flex-shrink-0 relative w-[160px] h-[160px] rounded-full pulse-avatar-online `}>
-                <img alt="umutbayraktar" src={`https://media.discordapp.net/attachments/737348411568685066/996841172372824184/YT_AVATAR_NET.jpg`} width="160" height="160" className={`bg-neutral-700 w-[160px] h-[160px] rounded-full`} />
-                <div className={`bg-[#040404] rounded-full px-[4px] py-[1px] flex items-center absolute bottom-0 right-4`}>
-                  <Tippy content="Online" animation="shift-away" arrow={false}>
-                    <i className={`fad fa-circle text-2xl text-online`} />
-                  </Tippy>
-                </div>
-              </div>
-              
-            </div>
-            <br></br>
-            <span style={{ zIndex: '-1' }} className="text-white/5 absolute bottom-3 left-7 text-xl sm:text-2xl md:text-4xl lg:text-3xl font-semibold">Community Manager</span>
-          </div>
-      </div>
+</div>
+<div class="header">
+<div class="call">
 
 
-        <div className="py-20">
-        <p className="text-3xl text-white font-semibold">GitHub Repositories</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-center mt-2">
-          {_repositories
-            ? repositories
-              ? repositories
-                  .sort((a, b) => b.stargazers_count - a.stargazers_count)
-                  .map((_, __) => (
-                    <a
-                      key={__}
-                      href={`https://github.com/umutxyp/`+_.name}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="bg-[#191932]/20 p-4 hover:bg-[#191932]/30 shadow-lg hover:shadow-xl transition-all duration-200 rounded-lg w-full"
-                    >
-                      <p className="text-md text-white">
-                        <span className="text-sm text-white/50 bg-black/25 px-2 py-1 rounded-md mr-1">
-                          {_.owner.login}
-                        </span>
-                        {_.name}
-                      </p>
-                      <div className="mt-5 flex justify-end w-full h-full items-center">
-                        <div className="flex w-full justify-between items-center">
-                          <Tippy
-                            content={"Stars"}
-                            arrow={false}
-                            animation="shift-away"
-                          >
-                            <div className="flex items-center">
-                              <p className="text-sm">
-                                <i className="fal fa-star mr-2" />
-                              </p>
-                              <p>{_.stargazers_count}</p>
-                            </div>
-                          </Tippy>
-                          <div className="text-sm text-white bg-black/25 px-2 py-1 rounded-md mr-1">
-                            {_.language || "Empty"}
-                          </div>
-                          <Tippy
-                            content={"Forks"}
-                            arrow={false}
-                            animation="shift-away"
-                          >
-                            <div className="flex items-center justify-end">
-                              <p>{_.forks}</p>
-                              <p className="text-sm">
-                                <i className="fal fa-code-branch ml-2" />
-                              </p>
-                            </div>
-                          </Tippy>
-                        </div>
-                      </div>
-                    </a>
-                  ))
-              : Array.from({ length: 6 }).map((_, __) => (
-                  <div
-                    key={__}
-                    className="bg-[#191932]/20 p-4 rounded-lg w-full"
-                  >
-                    <div className="bg-[#191932]/50 animate-pulse w-full h-[28px] rounded-md" />
-                    <div className="mt-5 flex w-full justify-between items-center">
-                      <div className="bg-[#191932]/50 animate-pulse w-12 h-[24px] rounded-md" />
-                      <div className="bg-[#191932]/50 animate-pulse w-24 h-[24px] rounded-md" />
-                      <div className="bg-[#191932]/50 animate-pulse w-12 h-[24px] rounded-md" />
-                    </div>
-                  </div>
-                ))
-            : Array.from({ length: 6 }).map((_, __) => (
-                <div key={__} className="bg-[#191932]/20 p-4 rounded-lg w-full">
-                  <div className="bg-[#191932]/50 animate-pulse w-full h-[28px] rounded-md" />
-                  <div className="mt-5 flex w-full justify-between items-center">
-                    <div className="bg-[#191932]/50 animate-pulse w-12 h-[24px] rounded-md" />
-                    <div className="bg-[#191932]/50 animate-pulse w-24 h-[24px] rounded-md" />
-                    <div className="bg-[#191932]/50 animate-pulse w-12 h-[24px] rounded-md" />
-                  </div>
-                </div>
-              ))}
-        </div>
-      </div>
+</div> 
+<div class="description">
+ </div>
+<div class="hero">
 
 
-    </>
-  )
-}
+
+</div>
+</div>
+<div class="section">
+<div class="content" >
+    <div id="deneme">
+<div class="title" style="text-align:center; font-size: 40px; " >
+        Emirhan Arıcılık - Ürün Fiyatları<hr>
+</div>
+<div class="description" >
+    <li style="list-style-type: none;">
+        <p><i class="fas fa-bee"></i><a href=""> Probolis Fiyatımız 100₺   </p>
+      
+       
+        <p><i class="fas fa-bee"></i><a href="">  2 Kg Petek Bal 240₺    </p>
+        
+    </li>
+</div>    
+</div>
+
+          
+</div>
+</div>
+<div class="hero">
+
+<img style= "width: 500px; height: 500px;" class="bounce-animation" src="https://cdn.discordapp.com/attachments/918480803669897266/1002137306850934814/Free_Sample_By_Wix_1.jpg" / ">
+
+</div>
+</div>
+<div class="section">
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320" class="waves waves-up" preserveaspectratio="none">
+<path fill="#ffff00" class="waves-up-path" fill-opacity="1" d="M0,32L30,53.3C60,75,120,117,180,117.3C240,117,300,75,360,48C420,21,480,11,540,37.3C600,64,660,128,720,149.3C780,171,840,149,900,122.7C960,96,1020,64,1080,74.7C1140,85,1200,139,1260,170.7C1320,203,1380,213,1410,218.7L1440,224L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+</svg>
+<div class="content bg-primary">
+<div class="title">
+
+</div>
+<div class="description">
+
+</div>
+<div class="cards"><link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+<div class="card fetch" data-user="">
+<div class="image jellyButton">
+<img class="pulse-white" src="" data-href="#"/>
+</div>
+<div class="title">
+<br><i class="fa fa-"></i>
+</div>
+<div class="description">
+
+</div>
+</div>
+<div class="card fetch" data-user="">
+<div class="image jellyButton">
+<img class="pulse-skyblue" src="" data-href="#"/>
+</div>
+<div class="title">
+Y<br> 
+<span data-tippy-content="" <br><i class="fa fa-"></i> <i class="fa fa-"></i> <i class="fa fa-"></i>
+</div>
+<div class="description">
+
+</div>
+</div>
+
+<div class="card fetch" data-user="">
+<div class="image jellyButton">
+<img herf="user/.html" class="pulse-rainbow" src=""/>
+</div>
+<div class="title">
+ <br><i class="fa fa-"></i>
+</div>
+<div class="description">
+
+</div>
+</div>
+
+
+				</p>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+</footer>
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+<script>
+      setTimeout(function() {
+        document.querySelector("body > .loadingbar").style.width = "100vw";
+        document
+          .querySelector("body > .loadingbar")
+          .addEventListener("transitionend", function() {
+            document.querySelector("body > .loadingbar").style.opacity = "0";
+            document
+              .querySelector("body > .loadingbar")
+              .addEventListener("transitionend", function() {
+                document.querySelector("body > .loadingbar").style.display =
+                  "none";
+              });
+          });
+      }, 100);
+      document
+        .querySelectorAll(".currentYear")
+        .forEach(e => (e.innerText = new Date().getFullYear()));
+      document.querySelector("nav > .toggle").onclick = function() {
+        this.classList.toggle("open");
+        if (this.classList.contains("open")) {
+          document.querySelector(".mobilenav").style.display = "flex";
+          document.querySelector(".mobilenav").style.transform = "scale(1)";
+        } else {
+          document.querySelector(".mobilenav").style.transform = "scale(0.1)";
+
+          setTimeout(function() {
+            document.querySelector(".mobilenav").style.display = "none";
+          }, 300);
+        }
+      };
+      document.querySelector(".mobilenav .close").onclick = function() {
+        document.querySelector(".mobilenav").style.transform = "scale(0.1)";
+        document.querySelector("nav > .toggle").classList.remove("open");
+        setTimeout(function() {
+          document.querySelector(".mobilenav").style.display = "none";
+        }, 300);
+      };
+      document
+        .querySelectorAll("img[data-href^='https']")
+        .forEach(e => (e.onclick = _ => window.open(e.dataset.href)));
+		document.querySelectorAll(".fetch").forEach(async (e) => {
+			if(!e.dataset.user) return;
+			const result = await fetch("https://api.blurple.gg/user/" + e.dataset.user).then(e => e.json()).catch();
+			e.children[0].children[0].src = "https://cdn.discordapp.com/avatars/" + result.id + "/" + result.avatar + "." + (result.avatar.startsWith("a_") ? "gif" : "png") + "?size=128";
+			e.children[1].innerText = result.username + "#" + result.discriminator;
+		});
+    </script>
+
+
+</body>
+</html>
